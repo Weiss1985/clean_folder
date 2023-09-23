@@ -85,20 +85,21 @@ def sort_files(folder_path):
     pass
 
 def main():
-    import sys
-
+    current_folder = os.getcwd()
     if len(sys.argv) != 2:
-        print("Usage: clean-folder <folder_path>")
+        folder_path = current_folder
+        print("Using current folder as the target folder.")
     else:
         folder_path = sys.argv[1]
-        known_extensions, unknown_extensions = sort_files(folder_path)
 
-        print("Known Extensions:")
-        for category, ext_list in known_extensions.items():
-            print(f"{category}: {', '.join(ext_list)}")
+    known_extensions, unknown_extensions = sort_files(folder_path)
 
-        print("\nUnknown Extensions:")
-        print(', '.join(unknown_extensions))
+    print("Known Extensions:")
+    for category, ext_list in known_extensions.items():
+        print(f"{category}: {', '.join(ext_list)}")
+
+    print("\nUnknown Extensions:")
+    print(', '.join(unknown_extensions))
 
 if __name__ == "__main__":
     main()
