@@ -85,7 +85,7 @@ if __name__ == "__main__":
     import sys
 
     if len(sys.argv) != 2:
-        print("Usage: python clean.py <folder_path>")
+        print("Usage in folder thet you want clean clean-folder")
     else:
         folder_path = sys.argv[1]
         known_extensions, unknown_extensions = sort_files(folder_path)
