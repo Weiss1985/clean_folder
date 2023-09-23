@@ -11,6 +11,7 @@ def normalize(filename):
     # Заміна всіх символів, крім літер латинського алфавіту та цифр, на "_"
     normalized_name = re.sub(r'[^a-zA-Z0-9_.]', '_', normalized_name)
     return normalized_name
+    pass
 
 def unpack_archive(archive_path, target_folder):
     """Розпаковує архів у вказану теку."""
@@ -23,6 +24,7 @@ def unpack_archive(archive_path, target_folder):
                 rar_ref.extractall(target_folder)
     except Exception as e:
         print(f"Failed to unpack archive {archive_path}: {e}")
+    pass
 
 def sort_files(folder_path):
     # Список відомих розширень для кожної категорії
@@ -80,12 +82,13 @@ def sort_files(folder_path):
                 os.remove(file_path)
 
     return known_extensions, list(unknown_extensions)
+    pass
 
-if __name__ == "__main__":
+def main():
     import sys
 
     if len(sys.argv) != 2:
-        print("Usage in folder thet you want clean clean-folder")
+        print("Usage: clean-folder <folder_path>")
     else:
         folder_path = sys.argv[1]
         known_extensions, unknown_extensions = sort_files(folder_path)
@@ -96,3 +99,6 @@ if __name__ == "__main__":
 
         print("\nUnknown Extensions:")
         print(', '.join(unknown_extensions))
+
+if __name__ == "__main__":
+    main()
